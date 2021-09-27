@@ -1,0 +1,43 @@
+.heading {
+    padding-left: 37%;
+    font-size: 34px;
+}
+
+#round-box {
+    font-weight: 600;
+    font-size: 20px;
+    margin-left: 45%;
+    margin-right: 45%;
+    text-align: center;
+}
+
+.flex-grid {
+    display: flex;
+}
+
+.col {
+    flex: 1;
+    padding-top: 15%;
+    margin-left: 5%;
+}
+
+#result-indicator {
+    padding-top: 3%;
+    margin-left: 47.5%;
+    font-size: 22px;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    margin-top: 50%;
+    font-size: 28px;
+    font-weight: 700; 
+    padding-left: 9%;
+  }
+  
+
+.round-text {
+    margin-top: 5%;
+    margin-left: 28%;
+}
