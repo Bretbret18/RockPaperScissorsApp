@@ -35,3 +35,14 @@
 // or loser. Winner will be displayed in green and loser will
 // be diplayed in red. 
 // ** // ** // ** // ** // ** // ** // ** // ** // ** // **
+
+// Round code
+// Game 
+
+
+
+// // Page Load
+// document.addEventListener('DOMContentLoaded', function (e) {
+//     round.innerHTML = roundArray[0];
+// });
+
