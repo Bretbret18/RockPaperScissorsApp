@@ -7,11 +7,17 @@ const playerTextBox = document.querySelector('#player-text');
 let playerResult = document.querySelector('#choice-box-player');
 // player symbol buttons
 const playerBtns = document.querySelectorAll('.playerBtn');
+// player round winner
+let playerWinColumn = document.querySelector('#player-text')
+// Player box indicator
+let playerSide = document.querySelector('#Player-side');
 // player play game button
 let shootBtn = document.querySelector('#shoot-btn');
 
 
 // opponent DOM
+// Opponent round winner
+let opponentWinColumn = document.querySelector('#opponent-text')
 // opponent buttons for display
 const opponentBtns = document.querySelectorAll('.opponentBtn')
 // opponent play game button for display
@@ -22,6 +28,9 @@ const opponentResult = document.querySelector('#choice-box-opponent')
 let opponentBox = document.querySelector('#opponent-div');
 // displays win/ lose column for round
 const opponentTextBox = document.querySelector('#opponent-text');
+// Opponent Box indicator
+let opponentSide = document.querySelector('#Opponent-side');
+
 
 // Game DOM
 // resets page and game
@@ -33,6 +42,13 @@ const nextRoundBtn = document.querySelector('#next-round-btn');
 // // current round
 let round = document.querySelector('#round');
 
+const sideIndicators = document.querySelector('.side-indicator');
+
+playerSide.style.fontSize = '18px';
+playerSide.style.fontWeight = '300';
+opponentSide.style.fontSize = '18px';
+opponentSide.style.fontWeight = '300';
+
 // // Round Number
 let roundArray = [
     1,
@@ -40,7 +56,19 @@ let roundArray = [
     3
 ];
 
-round.innerHTML = roundArray[0];
+let roundIterator = 0;
+
+round.innerHTML = roundArray[roundIterator];
+
+// NEXT ROUND FUNCTION
+function nextRound() {
+    nextRoundBtn.addEventListener('click', function (e) {
+        console.log(e.currentTarget);
+        roundIterator++
+        round.innerHTML = roundArray[roundIterator]
+        shootEvent()
+    })
+};
 
 // PLAYER CHOICE EVENTS
 function playerChoicesEvent() {
@@ -53,8 +81,6 @@ function playerChoicesEvent() {
                 playerResult.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-gem" viewBox="0 0 16 16">
              <path d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495 8 13.366l2.532-7.876-5.062.005zm-1.371-.999-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l5.113 6.817-2.192-6.82L1.5 5.5zm7.889 6.817 5.123-6.83-2.928.002-2.195 6.828z"/>
            </svg>`;
-
-
             } else if (btn.className === 'playerBtn paper') {
                 playerResult.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
             fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
@@ -70,15 +96,10 @@ function playerChoicesEvent() {
                 d="M3.5 3.5c-.614-.884-.074-1.962.858-2.5L8 7.226 11.642 1c.932.538 1.472 1.616.858 2.5L8.81 8.61l1.556 2.661a2.5 2.5 0 1 1-.794.637L8 9.73l-1.572 2.177a2.5 2.5 0 1 1-.794-.637L7.19 8.61 3.5 3.5zm2.5 10a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0zm7 0a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z" />
         </svg>`;
             }
-
-
-
         });
-
     });
-
+    shootEvent()
 };
-
 
 let opponentArray = [
     {
@@ -113,63 +134,109 @@ let symbolArray = [rock, paper, scissors];
 
 // SHOOT EVENT// OPPONENT CHOICE EVENTS
 // Shoot Event Listener
-shootBtn.addEventListener('click', function (e) {
+function shootEvent() {
+    shootBtn.addEventListener('click', function (e) {
+        // highlight and display rock, paper, and scissors for opponent turn 
+        setTimeout(() => {
+            opponentBtns[0].style.borderColor = 'green';
+            opponentResult.innerHTML = symbolArray[0];
+        }, 0000);
+        setTimeout(() => {
+            opponentBtns[1].style.borderColor = 'blue';
+            opponentResult.innerHTML = symbolArray[1];
+        }, 1000);
+        setTimeout(() => {
+            opponentBtns[2].style.borderColor = 'purple';
+            opponentResult.innerHTML = symbolArray[2];
+        }, 2000);
+        setTimeout(() => {
+            opponentShoot.style.borderColor = 'red';
+            opponentResult.innerHTML = symbolArray[getRandom()]
 
-    // if(e.currentTarget && playerResult.children)
-    // highlight and display rock, paper, and scissors for opponent turn 
-    setTimeout(() => { opponentBtns[0].style.borderColor = 'green'; }, 0000);
-    setTimeout(() => { opponentResult.innerHTML = symbolArray[0]; }, 0000);
-    setTimeout(() => { opponentBtns[1].style.borderColor = 'blue'; }, 1000);
-    setTimeout(() => { opponentResult.innerHTML = symbolArray[1]; }, 1000);
-    setTimeout(() => { opponentBtns[2].style.borderColor = 'purple'; }, 2000);
-    setTimeout(() => { opponentResult.innerHTML = symbolArray[2]; }, 2000);
-    setTimeout(() => { opponentShoot.style.borderColor = 'red'; }, 3000);
-    setTimeout(() => {
+            let playerVal = playerResult.firstChild.className.baseVal;
+            let opponentVal = opponentResult.firstChild.className.baseVal;
 
-        opponentResult.innerHTML = symbolArray[getRandom()];
+            // player: rock
+            if (playerVal === 'bi bi-gem' && opponentVal === 'bi bi-scissors') {
+                console.log('win');
+                playerWinColumn.innerHTML = 'Win!';
+                playerWinColumn.style.color = 'green';
+                opponentWinColumn.innerHTML = 'Lose!';
+                opponentWinColumn.style.color = 'red';
+                nextRound()
+            }
+            if (playerVal === 'bi bi-gem' && opponentVal === 'bi bi-file-text') {
+                console.log('lose');
+                playerWinColumn.innerHTML = 'Lose!';
+                playerWinColumn.style.color = 'red';
+                opponentWinColumn.innerHTML = 'Win!';
+                opponentWinColumn.style.color = 'green';
+                nextRound()
+            }
+            if (playerVal === 'bi bi-gem' && opponentVal === 'bi bi-gem') {
+                console.log('draw');
+                playerWinColumn.innerHTML = 'Draw!';
+                opponentWinColumn.innerHTML = 'Draw!';
+                nextRound()
+            }
+            // player: paper
+            if (playerVal === 'bi bi-file-text' && opponentVal === 'bi bi-scissors') {
+                console.log('lose');
+                playerWinColumn.innerHTML = 'Lose!';
+                playerWinColumn.style.color = 'red';
+                opponentWinColumn.innerHTML = 'Win!';
+                opponentWinColumn.style.color = 'green';
+                nextRound()
+            }
+            if (playerVal === 'bi bi-file-text' && opponentVal === 'bi bi-file-text') {
+                console.log('draw');
+                playerWinColumn.innerHTML = 'Draw!';
+                opponentWinColumn.innerHTML = 'Draw!';
+                nextRound()
+            }
+            if (playerVal === 'bi bi-file-text' && opponentVal === 'bi bi-gem') {
+                console.log('win');
+                playerWinColumn.innerHTML = 'Win!';
+                playerWinColumn.style.color = 'green';
+                opponentWinColumn.innerHTML = 'Lose!';
+                opponentWinColumn.style.color = 'red';
+                nextRound()
+            }
+            // player: scissors
+            if (playerVal === 'bi bi-scissors' && opponentVal === 'bi bi-scissors') {
+                console.log('draw');
+                playerWinColumn.innerHTML = 'Draw!';
+                opponentWinColumn.innerHTML = 'Draw!';
+                nextRound()
+            }
+            if (playerVal === 'bi bi-scissors' && opponentVal === 'bi bi-file-text') {
+                console.log('win');
+                playerWinColumn.innerHTML = 'Win!';
+                playerWinColumn.style.color = 'green';
+                opponentWinColumn.innerHTML = 'Lose!';
+                opponentWinColumn.style.color = 'red';
+                nextRound()
+            }
+            if (playerVal === 'bi bi-scissors' && opponentVal === 'bi bi-gem') {
+                console.log('lose');
+                playerWinColumn.innerHTML = 'Loss!';
+                playerWinColumn.style.color = 'red';
+                opponentWinColumn.innerHTML = 'Win!';
+                opponentWinColumn.style.color = 'green';
+                nextRound()
+            }
+            console.log(playerVal);
+            console.log(opponentVal);
 
-        // player: rock
-        if (playerResult.firstChild.className.baseVal === 'bi bi-gem' && opponentResult.firstChild.className.baseVal === 'bi bi-scissors') {
-            console.log('win');
-        }
-        if (playerResult.firstChild.className.baseVal === 'bi bi-gem' && opponentResult.firstChild.className.baseVal === 'bi bi-file-text') {
-            console.log('lose');
-        }
-        if (playerResult.firstChild.className.baseVal === 'bi bi-gem' && opponentResult.firstChild.className.baseVal === 'bi bi-gem') {
-            console.log('draw');
-        }
-        // player: paper
-        if (playerResult.firstChild.className.baseVal === 'bi bi-file-text' && opponentResult.firstChild.className.baseVal === 'bi bi-scissors') {
-            console.log('lose');
-        }
-        if (playerResult.firstChild.className.baseVal === 'bi bi-file-text' && opponentResult.firstChild.className.baseVal === 'bi bi-file-text') {
-            console.log('draw');
-        }
-        if (playerResult.firstChild.className.baseVal === 'bi bi-file-text' && opponentResult.firstChild.className.baseVal === 'bi bi-gem') {
-            console.log('win');
-        }
-        // player: scissors
-        if (playerResult.firstChild.className.baseVal === 'bi bi-scissors' && opponentResult.firstChild.className.baseVal === 'bi bi-scissors') {
-            console.log('draw');
-        }
-        if (playerResult.firstChild.className.baseVal === 'bi bi-scissors' && opponentResult.firstChild.className.baseVal === 'bi bi-file-text') {
-            console.log('win');
-        }
-        if (playerResult.firstChild.className.baseVal === 'bi bi-scissors' && opponentResult.firstChild.className.baseVal === 'bi bi-gem') {
-            console.log('lose');
-        }
-        console.log(playerResult.firstChild.className.baseVal);
-        console.log(opponentResult.firstChild.className.baseVal);
+        }, 3000);
 
-    }, 3000);
-
-
-    // get random symbol function
-    function getRandom() {
-        return Math.floor(Math.random() * opponentArray.length)
-    }
-})
-
+        // get random symbol function
+        function getRandom() {
+            return Math.floor(Math.random() * opponentArray.length)
+        }
+    });
+    //
+}
 
 // PLAY AGAIN FUNCTION
 function playAgainEvent() {

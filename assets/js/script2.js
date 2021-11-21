@@ -36,8 +36,111 @@
 // be diplayed in red. 
 // ** // ** // ** // ** // ** // ** // ** // ** // ** // **
 
+let playerVal = playerResult.firstChild.className.baseVal;
+let opponentVal = opponentResult.firstChild.className.baseVal;
+
+
 // Round code
 // Game 
+const expr = '';
+switch (expr) {
+    case 'Player Lose rock vs. paper':
+        if (playerVal === 'bi bi-gem' &&
+            opponentVal === 'bi bi-file-text') {
+            console.log('Lose');
+            playerWinColumn.innerHTML = 'Win!';
+            playerWinColumn.style.color = 'green';
+            opponentWinColumn.innerHTML = 'Lose!';
+            opponentWinColumn.style.color = 'red';
+            nextRound()
+        }
+        break;
+    case 'Player Win rock vs. scissors':
+        if (playerVal === 'bi bi-gem' &&
+            opponentVal === 'bi bi-scissors') {
+            console.log('win');
+            playerWinColumn.innerHTML = 'Win!';
+            playerWinColumn.style.color = 'green';
+            opponentWinColumn.innerHTML = 'Lose!';
+            opponentWinColumn.style.color = 'red';
+            nextRound()
+        }
+        break;
+    case 'Player draw rock vs. rock':
+        if (playerVal === 'bi bi-gem' &&
+            opponentVal === 'bi bi-gem') {
+            console.log('draw');
+            playerWinColumn.innerHTML = 'Draw!';
+            opponentWinColumn.innerHTML = 'Draw!';
+            nextRound()
+        }
+        break;
+    case 'Player Lose paper vs. scissors':
+        if (playerVal === 'bi bi-file-text' &&
+            opponentVal === 'bi bi-scissors') {
+            console.log('Lose');
+            opponentWinColumn.innerHTML = 'Win!';
+            opponentWinColumn.style.color = 'green';
+            playerWinColumn.innerHTML = 'Lose!';
+            playerWinColumn.style.color = 'red';
+            nextRound()
+        }
+        break;
+    case 'Player Win paper vs. rock':
+        if (playerVal === 'bi bi-file-text' &&
+            opponentVal === 'bi bi-gem') {
+            console.log('win');
+            playerWinColumn.innerHTML = 'Win!';
+            playerWinColumn.style.color = 'green';
+            opponentWinColumn.innerHTML = 'Lose!';
+            opponentWinColumn.style.color = 'red';
+            nextRound()
+        }
+        break;
+    case 'Player draw paper vs. paper':
+        if (playerVal === 'bi bi-file-text' &&
+            opponentVal === 'bi bi-file-text') {
+            console.log('draw');
+            playerWinColumn.innerHTML = 'Draw!';
+            opponentWinColumn.innerHTML = 'Draw!';
+            nextRound()
+        }
+        break;
+        case 'Player Win scissors vs. paper':
+        if (playerVal === 'bi bi-scissors' &&
+         opponentVal === 'bi bi-file-text') {
+            console.log('Lose');
+            playerWinColumn.innerHTML = 'Win!';
+            playerWinColumn.style.color = 'green';
+            opponentWinColumn.innerHTML = 'Lose!';
+            opponentWinColumn.style.color = 'red';
+            nextRound()
+        }
+        break;
+        case 'Player Lose scissors vs. rock':
+            if (playerVal === 'bi bi-gem' && 
+            opponentVal === 'bi bi-scissors') {
+                console.log('win');
+                opponentWinColumn.innerHTML = 'Win!';
+                opponentWinColumn.style.color = 'green';
+                playertWinColumn.innerHTML = 'Lose!';
+                playerWinColumn.style.color = 'red';
+                nextRound()
+            }
+            break;
+            case 'Player draw scissors vs. scissors':
+                if (playerVal === 'bi bi-scissors' && 
+                opponentVal === 'bi bi-scissors') {
+                    console.log('draw');
+                    playerWinColumn.innerHTML = 'Draw!';
+                    opponentWinColumn.innerHTML = 'Draw!';
+                    nextRound()
+                }
+                break;
+};
+
+    // expected output: "Mangoes and papayas are $2.79 a pound."
+
 
 
 
