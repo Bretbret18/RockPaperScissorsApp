@@ -24,7 +24,7 @@ const opponentBtns = document.querySelectorAll('.opponentBtn')
 const opponentShoot = document.querySelector('#opponentShoot-btn');
 // opponent symbol placement
 const opponentResult = document.querySelector('#choice-box-opponent')
-// 
+// opponent div
 let opponentBox = document.querySelector('#opponent-div');
 // displays win/ lose column for round
 const opponentTextBox = document.querySelector('#opponent-text');
@@ -66,6 +66,11 @@ function nextRound() {
         console.log(e.currentTarget);
         roundIterator++
         round.innerHTML = roundArray[roundIterator]
+
+        // localStorage per round
+
+
+
         shootEvent()
     })
 };
@@ -156,16 +161,60 @@ function shootEvent() {
             let playerVal = playerResult.firstChild.className.baseVal;
             let opponentVal = opponentResult.firstChild.className.baseVal;
 
+            roundResults = [
+                {
+                    playerWin: 0
+                },
+                {
+                    opponentWin: 0
+                },
+                {
+                    draw: 0
+                }
+            ];
+
+
+            let gameStats = `${roundResults[0].playerWin} ${roundResults[1].opponentWin} ${roundResults[2].draw}`;
+            console.log(gameStats);
+
+
+
             // player: rock
             if (playerVal === 'bi bi-gem' && opponentVal === 'bi bi-scissors') {
+
+                roundResults[0].playerWin++
+
+                console.log(`${roundResults[0].playerWin} ${roundResults[1].opponentWin} ${roundResults[2].draw}`);
+
+                console.log(roundResults);
+               let roundResult = localStorage.getItem('roundResults');
+               
+                if (roundResult) {
+                    roundResult = [];
+                } else {
+                    localStorage.setItem('win - lose - draw', `${roundResults[0].playerWin} ${roundResults[1].opponentWin} ${roundResults[2].draw}`)
+                }
+
                 console.log('win');
                 playerWinColumn.innerHTML = 'Win!';
                 playerWinColumn.style.color = 'green';
                 opponentWinColumn.innerHTML = 'Lose!';
                 opponentWinColumn.style.color = 'red';
                 nextRound()
+
             }
             if (playerVal === 'bi bi-gem' && opponentVal === 'bi bi-file-text') {
+                roundResults[1].opponentWin++
+                console.log(`${roundResults[0].playerWin} ${roundResults[1].opponentWin} ${roundResults[2].draw}`);
+
+                roundResult = localStorage.getItem('roundResults');
+               
+                if (roundResult) {
+                    roundResult = [];
+                } else {
+                    localStorage.setItem('win - lose - draw', `${roundResults[0].playerWin} ${roundResults[1].opponentWin} ${roundResults[2].draw}`)
+                }
+
                 console.log('lose');
                 playerWinColumn.innerHTML = 'Lose!';
                 playerWinColumn.style.color = 'red';
@@ -174,6 +223,17 @@ function shootEvent() {
                 nextRound()
             }
             if (playerVal === 'bi bi-gem' && opponentVal === 'bi bi-gem') {
+                roundResults[2].draw++
+                console.log(`${roundResults[0].playerWin} ${roundResults[1].opponentWin} ${roundResults[2].draw}`);
+
+                roundResult = localStorage.getItem('roundResults');
+                
+                if (roundResult) {
+                    roundResult = [];
+                } else {
+                    localStorage.setItem('win - lose - draw', `${roundResults[0].playerWin} ${roundResults[1].opponentWin} ${roundResults[2].draw}`)
+                }
+
                 console.log('draw');
                 playerWinColumn.innerHTML = 'Draw!';
                 opponentWinColumn.innerHTML = 'Draw!';
@@ -181,6 +241,17 @@ function shootEvent() {
             }
             // player: paper
             if (playerVal === 'bi bi-file-text' && opponentVal === 'bi bi-scissors') {
+                roundResults[1].opponentWin++
+                console.log(`${roundResults[0].playerWin} ${roundResults[1].opponentWin} ${roundResults[2].draw}`);
+
+                roundResult = localStorage.getItem('roundResults');
+               
+                if (roundResult) {
+                    roundResult = [];
+                } else {
+                    localStorage.setItem('win - lose - draw', `${roundResults[0].playerWin} ${roundResults[1].opponentWin} ${roundResults[2].draw}`)
+                }
+
                 console.log('lose');
                 playerWinColumn.innerHTML = 'Lose!';
                 playerWinColumn.style.color = 'red';
@@ -189,12 +260,34 @@ function shootEvent() {
                 nextRound()
             }
             if (playerVal === 'bi bi-file-text' && opponentVal === 'bi bi-file-text') {
+                roundResults[2].draw++
+                console.log(`${roundResults[0].playerWin} ${roundResults[1].opponentWin} ${roundResults[2].draw}`);
+
+                roundResult = localStorage.getItem('roundResults');
+                
+                if (roundResult) {
+                    roundResult = [];
+                } else {
+                    localStorage.setItem('win - lose - draw', `${roundResults[0].playerWin} ${roundResults[1].opponentWin} ${roundResults[2].draw}`)
+                }
+
                 console.log('draw');
                 playerWinColumn.innerHTML = 'Draw!';
                 opponentWinColumn.innerHTML = 'Draw!';
                 nextRound()
             }
             if (playerVal === 'bi bi-file-text' && opponentVal === 'bi bi-gem') {
+                roundResults[0].playerWin++
+                console.log(`${roundResults[0].playerWin} ${roundResults[1].opponentWin} ${roundResults[2].draw}`);
+
+                roundResult = localStorage.getItem('roundResults');
+               
+                if (roundResult) {
+                    roundResult = [];
+                } else {
+                    localStorage.setItem('win - lose - draw', `${roundResults[0].playerWin} ${roundResults[1].opponentWin} ${roundResults[2].draw}`)
+                }
+
                 console.log('win');
                 playerWinColumn.innerHTML = 'Win!';
                 playerWinColumn.style.color = 'green';
@@ -204,12 +297,34 @@ function shootEvent() {
             }
             // player: scissors
             if (playerVal === 'bi bi-scissors' && opponentVal === 'bi bi-scissors') {
+                roundResults[2].draw++
+                console.log(`${roundResults[0].playerWin} ${roundResults[1].opponentWin} ${roundResults[2].draw}`);
+
+                roundResult = localStorage.getItem('roundResults');
+                
+                if (roundResult) {
+                    roundResult = [];
+                } else {
+                    localStorage.setItem('win - lose - draw', `${roundResults[0].playerWin} ${roundResults[1].opponentWin} ${roundResults[2].draw}`)
+                }
+
                 console.log('draw');
                 playerWinColumn.innerHTML = 'Draw!';
                 opponentWinColumn.innerHTML = 'Draw!';
                 nextRound()
             }
             if (playerVal === 'bi bi-scissors' && opponentVal === 'bi bi-file-text') {
+                roundResults[0].playerWin++
+                console.log(`${roundResults[0].playerWin} ${roundResults[1].opponentWin} ${roundResults[2].draw}`);
+
+                roundResult = localStorage.getItem('roundResults');
+               
+                if (roundResult) {
+                    roundResult = [];
+                } else {
+                    localStorage.setItem('win - lose - draw', `${roundResults[0].playerWin} ${roundResults[1].opponentWin} ${roundResults[2].draw}`)
+                }
+
                 console.log('win');
                 playerWinColumn.innerHTML = 'Win!';
                 playerWinColumn.style.color = 'green';
@@ -218,6 +333,17 @@ function shootEvent() {
                 nextRound()
             }
             if (playerVal === 'bi bi-scissors' && opponentVal === 'bi bi-gem') {
+                roundResults[1].opponentWin++
+                console.log(`${roundResults[0].playerWin} ${roundResults[1].opponentWin} ${roundResults[2].draw}`);
+
+                roundResult = localStorage.getItem('roundResults');
+               
+                if (roundResult) {
+                    roundResult = [];
+                } else {
+                    localStorage.setItem('win - lose - draw', `${roundResults[0].playerWin} ${roundResults[1].opponentWin} ${roundResults[2].draw}`)
+                }
+
                 console.log('lose');
                 playerWinColumn.innerHTML = 'Loss!';
                 playerWinColumn.style.color = 'red';
@@ -235,7 +361,7 @@ function shootEvent() {
             return Math.floor(Math.random() * opponentArray.length)
         }
     });
-    //
+
 }
 
 // PLAY AGAIN FUNCTION
