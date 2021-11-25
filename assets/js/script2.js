@@ -9,8 +9,6 @@
 // Win, lose, or draw determined and diplayed in result box
 // Round box changes for given round
 
-
-
 // Figure out how result box will display
 // results
 
@@ -70,5 +68,13 @@ console.log(roundResults[0].playerWin);
             console.log(`${roundResults[0].playerWin} ${roundResults[1].opponentWin} ${roundResults[2].draw}`);
             console.log(gameStats);
 // console.log(roundResults[0].playerWin, roundResults[1].opponentWin, roundResults[2].draw);
+
+let roundResult = localStorage.getItem('roundResults');
+               
+                if (roundResult) {
+                    roundResult = [];
+                } else {
+                    localStorage.setItem('win - lose - draw', `${roundResults[0].playerWin} ${roundResults[1].opponentWin} ${roundResults[2].draw}`)
+                }
 
 
