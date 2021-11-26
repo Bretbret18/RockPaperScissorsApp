@@ -44,10 +44,15 @@ const sideIndicators = document.querySelector('.side-indicator');
 // win/ lose ratio per game
 let resultIndicator = document.querySelector('#result-indicator');
 
+playerSide.style.fontSize = '18px';
+playerSide.style.fontWeight = '300';
+opponentSide.style.fontSize = '18px';
+opponentSide.style.fontWeight = '300';
+
 let roundIterator = 1;
 
 function nextRound() {
-    
+
     round.innerHTML = roundIterator;
 
     nextRoundBtn.addEventListener('click', function (e) {
@@ -70,11 +75,6 @@ function nextRound() {
     shootEvent()
 };
 
-playerSide.style.fontSize = '18px';
-playerSide.style.fontWeight = '300';
-opponentSide.style.fontSize = '18px';
-opponentSide.style.fontWeight = '300';
-
 // PLAYER CHOICE EVENTS
 function playerChoicesEvent() {
     // Player Buttons Event Listener
@@ -92,7 +92,6 @@ function playerChoicesEvent() {
             }
         });
     });
-
 };
 
 let opponentArray = [
@@ -275,17 +274,12 @@ function shootEvent() {
 
         }, 3000);
 
-        
-
         // get random symbol function
         function getRandom() {
             return Math.floor(Math.random() * opponentArray.length)
         }
-        
     });
-   
 };
-
 
 // PLAY AGAIN FUNCTION
 function playAgainEvent() {
