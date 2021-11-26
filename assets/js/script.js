@@ -44,13 +44,36 @@ const sideIndicators = document.querySelector('.side-indicator');
 // win/ lose ratio per game
 let resultIndicator = document.querySelector('#result-indicator');
 
+let roundIterator = 1;
+
+function nextRound() {
+    
+    round.innerHTML = roundIterator;
+
+    nextRoundBtn.addEventListener('click', function (e) {
+        roundIterator++
+        if (roundIterator >= 4) {
+            roundIterator = 3;
+            return
+        }
+        console.log(e.currentTarget);
+        round.innerHTML = roundIterator;
+        playerResult.innerHTML = 'Choice Box';
+        opponentResult.innerHTML = 'Choice Box';
+        playerWinColumn.innerHTML = '';
+        opponentWinColumn.innerHTML = '';
+        opponentShootBtn.style.borderColor = 'gray';
+        opponentBtns.forEach(function (btn) {
+            btn.style.borderColor = 'gray';
+        })
+    })
+    shootEvent()
+};
+
 playerSide.style.fontSize = '18px';
 playerSide.style.fontWeight = '300';
 opponentSide.style.fontSize = '18px';
 opponentSide.style.fontWeight = '300';
-
-// NEXT ROUND FUNCTION
-
 
 // PLAYER CHOICE EVENTS
 function playerChoicesEvent() {
@@ -69,7 +92,7 @@ function playerChoicesEvent() {
             }
         });
     });
-    shootEvent()
+
 };
 
 let opponentArray = [
@@ -152,7 +175,7 @@ function shootEvent() {
                 playerWinColumn.style.color = 'green';
                 opponentWinColumn.innerHTML = 'Lose!';
                 opponentWinColumn.style.color = 'red';
-                
+
             }
 
             if (playerVal === 'bi bi-gem' && opponentVal === 'bi bi-file-text') {
@@ -163,7 +186,7 @@ function shootEvent() {
                 playerWinColumn.style.color = 'red';
                 opponentWinColumn.innerHTML = 'Win!';
                 opponentWinColumn.style.color = 'green';
-                
+
             }
 
             if (playerVal === 'bi bi-gem' && opponentVal === 'bi bi-gem') {
@@ -172,7 +195,7 @@ function shootEvent() {
                 console.log('draw');
                 playerWinColumn.innerHTML = 'Draw!';
                 opponentWinColumn.innerHTML = 'Draw!';
-               
+
             }
             // player: paper
             if (playerVal === 'bi bi-file-text' && opponentVal === 'bi bi-scissors') {
@@ -183,7 +206,7 @@ function shootEvent() {
                 playerWinColumn.style.color = 'red';
                 opponentWinColumn.innerHTML = 'Win!';
                 opponentWinColumn.style.color = 'green';
-               
+
             }
 
             if (playerVal === 'bi bi-file-text' && opponentVal === 'bi bi-file-text') {
@@ -192,7 +215,7 @@ function shootEvent() {
                 console.log('draw');
                 playerWinColumn.innerHTML = 'Draw!';
                 opponentWinColumn.innerHTML = 'Draw!';
-              
+
             }
 
             if (playerVal === 'bi bi-file-text' && opponentVal === 'bi bi-gem') {
@@ -203,7 +226,7 @@ function shootEvent() {
                 playerWinColumn.style.color = 'green';
                 opponentWinColumn.innerHTML = 'Lose!';
                 opponentWinColumn.style.color = 'red';
-            
+
             }
             // player: scissors
             if (playerVal === 'bi bi-scissors' && opponentVal === 'bi bi-scissors') {
@@ -212,7 +235,7 @@ function shootEvent() {
                 console.log('draw');
                 playerWinColumn.innerHTML = 'Draw!';
                 opponentWinColumn.innerHTML = 'Draw!';
-             
+
             }
 
             if (playerVal === 'bi bi-scissors' && opponentVal === 'bi bi-file-text') {
@@ -223,7 +246,7 @@ function shootEvent() {
                 playerWinColumn.style.color = 'green';
                 opponentWinColumn.innerHTML = 'Lose!';
                 opponentWinColumn.style.color = 'red';
-              
+
             }
 
             if (playerVal === 'bi bi-scissors' && opponentVal === 'bi bi-gem') {
@@ -234,7 +257,7 @@ function shootEvent() {
                 playerWinColumn.style.color = 'red';
                 opponentWinColumn.innerHTML = 'Win!';
                 opponentWinColumn.style.color = 'green';
-               
+
             }
 
             handleLocalStorage()
@@ -243,10 +266,8 @@ function shootEvent() {
             function handleLocalStorage() {
                 // setItem works - Find way to update initial values
                 localStorage.setItem('Win/Lose/Draw', `${roundResults[0].playerWin}/${roundResults[1].opponentWin}/${roundResults[2].draw}`)
-                
-            };
 
-            nextRound()
+            };
 
             // Player / Opponent Shoot Results
             console.log(playerVal);
@@ -254,43 +275,17 @@ function shootEvent() {
 
         }, 3000);
 
+        
+
         // get random symbol function
         function getRandom() {
             return Math.floor(Math.random() * opponentArray.length)
         }
+        
     });
+   
 };
 
-let roundIterator = 0;
-
-function nextRound() {
-    
-    // // Round Number
-    let roundArray = [
-        1,
-        2,
-        3
-    ];
-
-    round.innerHTML = roundArray[roundIterator];
-
-    nextRoundBtn.addEventListener('click', function (e) {
-        console.log(e.currentTarget);
-        
-       
-      
-        playerResult.innerHTML = 'Choice Box';
-        opponentResult.innerHTML = 'Choice Box';
-        playerWinColumn.innerHTML = '';
-        opponentWinColumn.innerHTML = '';
-        opponentBtns.forEach(function(btn){
-            btn.style.borderColor = 'gray';
-        })
-        opponentShootBtn.style.borderColor = 'gray';
-        
-        shootEvent()
-    })
-};
 
 // PLAY AGAIN FUNCTION
 function playAgainEvent() {
@@ -299,8 +294,8 @@ function playAgainEvent() {
     })
 };
 
-
+nextRound()
 playerChoicesEvent()
 playAgainEvent()
-nextRound()
+
 
