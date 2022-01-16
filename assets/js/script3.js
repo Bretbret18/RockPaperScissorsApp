@@ -114,17 +114,15 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
     },
     shootEvent: function () {
         shootBtn.addEventListener('click', function (e) {
-            console.log(e);
             if (playerResult.firstElementChild == null) {
                 return null
-            }
+            };
 
             let rockResult = game.symbolArray[0].rock;
             let paperResult = game.symbolArray[1].paper;
             let scissorsResult = game.symbolArray[2].scissors;
 
             let gameArrayResults = [rockResult, paperResult, scissorsResult]
-
 
             // highlight and display rock, paper, and scissors for opponent turn 
             setTimeout(() => {
@@ -147,94 +145,36 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
 
                 console.log(playerVal, opponentVal);
 
+                // Rock
                 if (playerVal === 'bi bi-gem' && opponentVal === 'bi bi-scissors') {
-                    game.score.win++;
                     game.roundResultPlayerWin()
-                    console.log(game.score.win, game.score.lose, game.score.draw);
-                    console.log('win');
                 }
                 if (playerVal === 'bi bi-gem' && opponentVal === 'bi bi-file-text') {
-                    game.score.lose++
                     game.roundResultPlayerLose()
-                    console.log(game.score.win, game.score.lose, game.score.draw)
-                    console.log('lose');
                 }
                 if (playerVal === 'bi bi-gem' && opponentVal === 'bi bi-gem') {
-                    game.score.draw++
                     game.roundResultDraw()
-                    console.log(game.score.win, game.score.lose, game.score.draw)
-                    console.log('draw');
                 }
-
-                // if(playerVal == rockResult && opponentVal == rockResult) {
-                //     console.log('tie');
-                // }
-                // if(playerVal == rockResult && opponentVal == paperResult) {
-                //     console.log('tie');
-                // }
-                // if(playerVal == rockResult && opponentVal == scissorsResult) {
-                //     console.log('tie');
-                // }
-
-                // // player: rock
-                // if (playerVal === gameArrayResults[0] && opponentVal === gameArrayResults[2]) {
-                //     console.log(game.score);
-                //     game.score.win++
-                //     game.roundResultPlayerWin()
-                //     console.log(playerVal, opponentVal);
-
-                // };
-                // if (playerVal === gameArrayResults[0] && opponentVal === gameArrayResults[1]) {
-                //     game.score.lose++
-                //     game.roundResultPlayerLose()
-                //     console.log(playerVal, opponentVal);
-                //     console.log(game.score);
-                // };
-                // if (playerVal === gameArrayResults[0] && opponentVal === gameArrayResults[0]) {
-                //     game.score.draw++
-                //     game.roundResultDraw()
-                //     console.log(playerVal, opponentVal);
-                //     console.log(game.score);
-                // };
-                // // player: paper
-                // if (playerVal === game.paper && opponentVal === game.scissors) {
-                //     game.score.lose++
-                //     game.roundResultPlayerLose()
-                //     console.log(playerVal, opponentVal);
-                //     console.log(game.score);
-                // };
-                // if (playerVal === game.paper && opponentVal === game.paper) {
-                //     game.score.draw++
-                //     game.roundResultDraw()
-                //     console.log(playerVal, opponentVal);
-                //     console.log(game.score);
-                // };
-                // if (playerVal === game.paper && opponentVal === game.rock) {
-                //     game.score.win++
-                //     game.roundResultPlayerWin()
-                //     console.log(playerVal, opponentVal);
-                //     console.log(game.score);
-                // };
-                // // player: scissors
-                // if (playerVal === game.scissors && opponentVal === game.scissors) {
-                //     game.score.draw++
-                //     game.roundResultDraw()
-                //     console.log(playerVal, opponentVal);
-                //     console.log(game.score);
-                // };
-                // if (playerVal === game.scissors && opponentVal === game.paper) {
-                //     game.score.win++
-                //     game.roundResultPlayerWin()
-                //     console.log(playerVal, opponentVal);
-                //     console.log(game.score);
-                // };
-                // if (playerVal === game.scissors && opponentVal === game.rock) {
-                //     game.score.lose++
-                //     game.roundResultPlayerLose()
-                //     console.log(playerVal, opponentVal);
-                //     console.log(game.score);
-                // };
-                console.log('here?');
+                // Paper
+                if (playerVal === 'bi bi-file-text' && opponentVal === 'bi bi-gem') {
+                    game.roundResultPlayerWin()
+                }
+                if (playerVal === 'bi bi-file-text' && opponentVal === 'bi bi-scissors') {
+                    game.roundResultPlayerLose()
+                }
+                if (playerVal === 'bi bi-file-text' && opponentVal === 'bi bi-file-text') {
+                    game.roundResultDraw()
+                }
+                 // Scissors
+                 if (playerVal === 'bi bi-scissors' && opponentVal === 'bi bi-file-text') {
+                    game.roundResultPlayerWin()
+                }
+                if (playerVal === 'bi bi-scissors' && opponentVal === 'bi bi-gem') {
+                    game.roundResultPlayerLose()
+                }
+                if (playerVal === 'bi bi-scissors' && opponentVal === 'bi bi-scissors') {
+                    game.roundResultDraw()
+                }
             }, 3000);
 
             // get random symbol function
@@ -244,22 +184,28 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
         })
     },
     roundResultPlayerWin: function () {
+        game.score.win++;
         playerWinColumn.innerHTML = 'Win!';
         playerWinColumn.style.color = 'green';
         opponentWinColumn.innerHTML = 'Lose!';
         opponentWinColumn.style.color = 'red';
+        console.log(game.score.win, game.score.lose, game.score.draw);
         console.log('win');
     },
     roundResultPlayerLose: function () {
+        game.score.lose++;
         playerWinColumn.innerHTML = 'Lose!';
         playerWinColumn.style.color = 'red';
         opponentWinColumn.innerHTML = 'Win!';
         opponentWinColumn.style.color = 'green';
+        console.log(game.score.win, game.score.lose, game.score.draw)
         console.log('lose');
     },
     roundResultDraw: function () {
+        game.score.draw++;
         playerWinColumn.innerHTML = 'Draw!';
         opponentWinColumn.innerHTML = 'Draw!';
+        console.log(game.score.win, game.score.lose, game.score.draw)
         console.log('draw');
     },
     playAgain: function () {
@@ -268,10 +214,6 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
         })
     }
 };
-
-function getRandom() {
-    return Math.floor(Math.random() * game.symbolArray.length)
-}
 
 game.btnsHandler()
 game.shootEvent()
