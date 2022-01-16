@@ -220,6 +220,15 @@ game.shootEvent()
 game.getRound()
 game.playAgain()
 
+// TASKS LEFT TO COMPLETE: 
+// - Handle round function when roundResult is a draw
+// - Only allow shootBtn to be fired once per round
+// - Show game score on page
+// - set score to local storage
+// - Update page styles
+// - create alternate page that explains instructions of
+// game that can be opened or closed at any time
+
 
 
 
