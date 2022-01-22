@@ -34,9 +34,11 @@ let round = document.querySelector('#round');
 // win/ lose ratio per game
 let resultIndicator = document.querySelector('#result-indicator');
 
+let roundIterator = 1;
+round.innerHTML = roundIterator;
+
 const game = {
     score: { win: 0, lose: 0, draw: 0 },
-    round: [1, 2, 3],
     symbolArray: [
         {
             rock: `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-gem" viewBox="0 0 16 16">
@@ -80,36 +82,39 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
             });
         });
     },
-
     getRound: function () {
-        let roundIterator = 1;
-        round.innerHTML = roundIterator;
-
         nextRoundBtn.addEventListener('click', function (e) {
-            shootBtn.style.pointerEvents = 'auto';
-            roundIterator++
-            if (roundIterator >= 4) {
-                roundIterator = 3;
-                return;
-            };
+            if (game.score.win >= 2 || game.score.lose >= 2) {
+                game.gameOver()
+                return null
+            }
+            if (game.score.win || game.score.lose) {
+                roundIterator++
+            }
+            round.innerHTML = roundIterator
 
-            round.innerHTML = roundIterator;
-            playerResult.innerHTML = 'Choose Button!';
-            opponentResult.innerHTML = '';
-            playerWinColumn.innerHTML = '';
-            opponentWinColumn.innerHTML = '';
-            opponentResult.style.color = 'black';
-            playerResult.style.color = 'black';
+            game.roundStyles()
         })
     },
+    roundStyles: function () {
+        shootBtn.style.pointerEvents = 'auto';
+        playerResult.innerHTML = 'Choose Button!';
+        opponentResult.innerHTML = '';
+        playerWinColumn.innerHTML = '';
+        opponentWinColumn.innerHTML = '';
+        opponentResult.style.color = 'black';
+        playerResult.style.color = 'black';
+
+        playerBtns[0].style.pointerEvents = 'auto';
+        playerBtns[1].style.pointerEvents = 'auto';
+        playerBtns[2].style.pointerEvents = 'auto';
+    },
     shootEvent: function () {
-
         shootBtn.addEventListener('click', function (e) {
-
             if (playerResult.firstElementChild == null) {
                 return null
-            } 
- 
+            }
+
             // highlight and display rock, paper, and scissors for opponent turn 
             setTimeout(() => {
                 opponentResult.innerHTML = game.symbolArray[0].rock;
@@ -121,7 +126,6 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
                 opponentResult.innerHTML = game.symbolArray[2].scissors;
             }, 2000);
             setTimeout(() => {
-
                 let rockResult = game.symbolArray[0].rock;
                 let paperResult = game.symbolArray[1].paper;
                 let scissorsResult = game.symbolArray[2].scissors;
@@ -169,6 +173,9 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
                 }
             }, 3000);
 
+            playerBtns[0].style.pointerEvents = 'none';
+            playerBtns[1].style.pointerEvents = 'none';
+            playerBtns[2].style.pointerEvents = 'none';
             shootBtn.style.pointerEvents = 'none';
 
             // get random symbol function
@@ -200,6 +207,7 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
         console.log('lose');
     },
     roundResultDraw: function () {
+        console.log('draw event');
         game.score.draw++;
         localStorage.setItem('record', `Win: ${game.score.win} Lose: ${game.score.lose} Draw: ${game.score.draw}`)
         resultIndicator.innerHTML = `Win: ${game.score.win} Lose: ${game.score.lose} Draw: ${game.score.draw}`;
@@ -207,6 +215,9 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
         opponentWinColumn.innerHTML = 'Draw!';
         console.log(game.score.win, game.score.lose, game.score.draw)
         console.log('draw');
+    },
+    gameOver: function () {
+        return null
     },
     playAgain: function () {
         playAgainBtn.addEventListener('click', function (e) {
@@ -219,10 +230,11 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
 game.btnsHandler()
 game.shootEvent()
 game.getRound()
+game.gameOver()
 game.playAgain()
 
 // TASKS LEFT TO COMPLETE:
-// - Handle round function when roundResult is a draw
+// - Display final result
 // - Update page styles
 // - create alternate page that explains instructions of
 // game that can be opened or closed at any time
