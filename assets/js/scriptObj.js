@@ -99,7 +99,7 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
     roundStyles: function () {
         shootBtn.style.pointerEvents = 'auto';
         playerResult.innerHTML = 'Choose Button!';
-        opponentResult.innerHTML = '';
+        opponentResult.innerHTML = 'Choose Button!';
         playerWinColumn.innerHTML = '';
         opponentWinColumn.innerHTML = '';
         opponentResult.style.color = 'black';
@@ -237,6 +237,9 @@ game.playAgain()
 // - Update page styles
 // - create alternate page that explains instructions of
 // game that can be opened or closed at any time
+
+// ADDITIONAL:
+// - Change opponent text from Choose Button! to press Shoot!
 
 
 
