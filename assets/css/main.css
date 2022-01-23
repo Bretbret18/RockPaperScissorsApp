@@ -1,0 +1,87 @@
+
+body {
+    background-color: #7891ab;
+}
+
+.heading {
+    padding-left: 37%;
+    font-size: 34px;  
+}
+
+#header {
+    color: #eb2121;
+}
+
+#round-box {
+    color: #eb2121; 
+    background-color: white;
+    margin-left: 45%;
+    margin-right: 45%;
+    font-size: 44px;
+}
+
+
+.flex-grid {
+    display: flex;
+}
+
+.col {
+    flex: 1;
+    
+    margin-left: 5%;
+}
+
+#result-indicator {
+    margin-top: 2%;
+        color: white;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    margin-top: 20%;
+    font-size: 28px;
+    font-weight: 700; 
+    padding-left: 9%;
+  }
+  
+.round-text {
+    margin-top: 5%;
+    margin-left: 28%;
+}
+
+.playerBtn {
+    color: #eb2121;
+    padding: 20px;
+
+}
+
+.shoot-style {
+    color: #eb2121;
+    background-color: white;
+    border: white;
+    padding: 25px;
+}
+
+#reset-game {
+    margin-top: 2%;
+    justify-content: center;
+}
+
+#next-round-btn {
+    border: 2px solid white;
+    border-radius: 30px;
+    color: white;
+    background-color: #eb2121;
+}
+
+#play-again {
+    background-color: #eb2121;
+    border: 2px solid white;
+    border-radius: 30px;
+    color: white;
+    margin-top: 3%;
+    
+}
+
+

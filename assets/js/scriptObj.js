@@ -115,7 +115,6 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
                 return null
             }
 
-            // highlight and display rock, paper, and scissors for opponent turn 
             setTimeout(() => {
                 opponentResult.innerHTML = game.symbolArray[0].rock;
             }, 0000);
