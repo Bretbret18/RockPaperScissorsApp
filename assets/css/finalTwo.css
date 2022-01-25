@@ -1,4 +1,3 @@
-
 body {
     background-color: #7891ab;
 }
@@ -10,6 +9,9 @@ body {
 
 #header {
     color: #eb2121;
+    font-variant: small-caps;
+    font-weight: 800;
+    font-size: 50px
 }
 
 #round-box {
@@ -18,8 +20,13 @@ body {
     margin-left: 45%;
     margin-right: 45%;
     font-size: 44px;
+    font-weight: 800;
 }
 
+#result-indicator {
+    font-weight: 400;
+    font-size: 20px
+}
 
 .flex-grid {
     display: flex;
@@ -27,33 +34,28 @@ body {
 
 .col {
     flex: 1;
-    
-    margin-left: 5%;
+    margin-left: 25%;
 }
 
 #result-indicator {
-    margin-top: 2%;
         color: white;
 }
 
 .column {
     float: left;
     width: 50%;
-    margin-top: 10%;
+    margin-top: 5%;
     font-size: 28px;
     font-weight: 700; 
     padding-left: 9%;
   }
-  
-.round-text {
-    margin-top: 5%;
-    margin-left: 28%;
-}
 
 .playerBtn {
     color: #eb2121;
     padding: 20px;
     border-radius: 10%;
+    font-weight: 800;
+    font-size: 22px;
 }
 
 .button-group {
@@ -68,13 +70,16 @@ body {
 .shoot-style {
     border: 2px solid #eb2121;
     border-radius: 30px;
+    padding: 20px 34px;
     color: #eb2121;
     background-color: white;
+    font-weight: 800;
+    font-size: 25px;
 }
 
 #reset-game {
-    margin-top: 5%;
-    margin-left: 3%;
+    /* margin-top: .5%; */
+    margin-left: 1.7%;
     justify-content: center;
 }
 
@@ -83,6 +88,9 @@ body {
     border-radius: 30px;
     color: white;
     background-color: #eb2121;
+    padding: 20px;
+    font-weight: 800;
+    font-size: 25px;
 }
 
 #play-again {
@@ -91,7 +99,9 @@ body {
     border-radius: 30px;
     color: white;
     margin-top: 3%;
-    
+    padding: 20px;
+    font-weight: 800;
+    font-size: 25px;
 }
 
 
