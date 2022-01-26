@@ -2,11 +2,6 @@ body {
     background-color: #7891ab;
 }
 
-.heading {
-    padding-left: 37%;
-    font-size: 34px;  
-}
-
 #header {
     color: #eb2121;
     font-variant: small-caps;
@@ -24,7 +19,7 @@ body {
 }
 
 #result-indicator {
-    font-weight: 400;
+    font-weight: 800;
     font-size: 20px
 }
 
@@ -37,10 +32,6 @@ body {
     margin-left: 25%;
 }
 
-#result-indicator {
-        color: white;
-}
-
 .column {
     float: left;
     width: 50%;
@@ -49,6 +40,12 @@ body {
     font-weight: 700; 
     padding-left: 9%;
   }
+
+  .row {
+    padding-right: 4%;
+}
+
+/* Player Buttons */
 
 .playerBtn {
     color: #eb2121;
@@ -63,8 +60,11 @@ body {
     margin-left: 2%;
 }
 
-.row {
-    padding-right: 4%;
+/* Match Buttons */
+
+#reset-game {
+    margin-left: 1.7%;
+    justify-content: center;
 }
 
 .shoot-style {
@@ -75,12 +75,6 @@ body {
     background-color: white;
     font-weight: 800;
     font-size: 25px;
-}
-
-#reset-game {
-    /* margin-top: .5%; */
-    margin-left: 1.7%;
-    justify-content: center;
 }
 
 #next-round-btn {
@@ -97,11 +91,75 @@ body {
     background-color: #eb2121;
     border: 2px solid white;
     border-radius: 30px;
-    color: white;
     margin-top: 3%;
     padding: 20px;
     font-weight: 800;
     font-size: 25px;
 }
 
+/* Info Page */
+
+.return-game {
+    margin-left: 65%;
+    color: blue;
+    font-weight: 900;
+    font-size: 22px;
+    border: 3px solid blue;
+}
+
+.game-info {
+    margin-top: 3%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-top: 15px;
+    border: 3px solid black; 
+    color: #eb2121;
+    background-color: white;
+    font-size: 22px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.rules {
+    color: black;
+    font-size: 26px;
+    text-align: center;
+}
+
+#good-luck {
+background-color: black;
+color: white;
+margin-top: 15px;
+margin-left: 25%;
+margin-right: 25%;
+text-align: center;
+}
+
+.greeting {
+    color: black;
+    font-size: 22px;
+    font-variant: small-caps;
+    font-style: oblique;
+    margin-bottom: 1%;
+}
+
+small {
+    color: white;
+}
+
+#header-info {
+    color: #eb2121;
+    font-variant: small-caps;
+    font-weight: 800;
+    font-size: 50px;
+    text-align: center;
+}
+
+.info-page {
+    margin-left: 65%;
+    color: blue;
+    font-weight: 900;
+    font-size: 22px;
+    border: 3px solid blue;
+}
 

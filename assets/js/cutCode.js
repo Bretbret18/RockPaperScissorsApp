@@ -25,3 +25,38 @@
         // playerBtns[0].style.pointerEvents = 'auto';
         // playerBtns[1].style.pointerEvents = 'auto';
         // playerBtns[2].style.pointerEvents = 'auto';
+
+// Switch Statement round Results (Not working)
+        // let gameResults = playerVal === 'bi bi-gem' && opponentVal === 'bi bi-file-text';
+        // switch (gameResults) {
+        //         case (playerVal === 'bi bi-gem' && opponentVal === 'bi bi-scissors'):
+        //             game.roundResultPlayerWin()
+        //             break;
+        //         case (playerVal === 'bi bi-gem' && opponentVal === 'bi bi-file-text'):
+        //             game.roundResultPlayerLose()
+        //             break;
+        //         case (playerVal === 'bi bi-gem' && opponentVal === 'bi bi-gem'):
+        //             game.roundResultDraw()
+        //             break;
+        //         case (playerVal === 'bi bi-file-text' && opponentVal === 'bi bi-gem'):
+        //             game.roundResultPlayerWin()
+        //             break;
+        //         case (playerVal === 'bi bi-file-text' && opponentVal === 'bi bi-scissors'):
+        //             game.roundResultPlayerLose()
+        //             break;
+        //         case (playerVal === 'bi bi-file-text' && opponentVal === 'bi bi-file-text'):
+        //             game.roundResultDraw()
+        //             break;
+        //         case (playerVal === 'bi bi-scissors' && opponentVal === 'bi bi-file-text'):
+        //             game.roundResultDraw()    
+        //             break;
+        //         case (playerVal === 'bi bi-scissors' && opponentVal === 'bi bi-file-text'):
+        //             game.roundResultPlayerWin()
+        //                 break;
+        //         case (playerVal === 'bi bi-scissors' && opponentVal === 'bi bi-gem'):
+        //             game.roundResultPlayerLose()
+        //             break;
+        //         case  (playerVal === 'bi bi-scissors' && opponentVal === 'bi bi-scissors'):
+        //             game.roundResultDraw()  
+        //             break;              
+        //     }

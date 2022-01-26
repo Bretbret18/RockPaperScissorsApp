@@ -72,11 +72,11 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
                 // Player Choice Animation
                 if (e.currentTarget === playerBtns[0]) {
                     playerResult.innerHTML = game.symbolArray[0].rock;
-                    btnChosenAnim()             
+                    btnChosenAnim()
                 }
                 if (e.currentTarget === playerBtns[1]) {
                     playerResult.innerHTML = game.symbolArray[1].paper;
-                    btnChosenAnim()               
+                    btnChosenAnim()
                 }
                 if (e.currentTarget === playerBtns[2]) {
                     playerResult.innerHTML = game.symbolArray[2].scissors;
@@ -104,7 +104,7 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
         opponentResult.innerHTML = 'Choose Button!';
         opponentResult.style.color = 'black';
         playerResult.style.color = 'black';
-        playerBtns.forEach(function(btn){
+        playerBtns.forEach(function (btn) {
             btn.style.pointerEvents = 'auto'
         })
     },
@@ -113,7 +113,7 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
             if (playerResult.firstElementChild == null) {
                 return null
             }
-            function shootPlayerColor(){
+            function shootPlayerColor() {
                 playerResult.style.color = '#fcff54';
             }
 
@@ -218,8 +218,6 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
     }
 };
 
-console.log(game.score.win, game.score.lose, game.score.draw);
-
 game.btnsHandler()
 game.shootEvent()
 game.getRound()
@@ -227,18 +225,14 @@ game.gameOver()
 game.playAgain()
 
 // TASKS LEFT TO COMPLETE:
-// - Display final result
-// - Update page styles
-// - create alternate page that explains instructions of
-// game that can be opened or closed at any time
+// - Create Page that game cuts to when player
+// wins or loses that states that the player has won
+// - Finish info page that explains the rules of the game
+// and functionality
+// - Convert CSS to SASS
 
-// ADDITIONAL:
-// - Change opponent text from Choose Button! to press Shoot!
 
-// Change win/lose text
-// from player div to choice box player/ opponent
-//             <div id="player-text" class="round-text text-center"></div>
-//             <div id="opponent-text" class="round-text text-center"></div>
+
 
 
 
