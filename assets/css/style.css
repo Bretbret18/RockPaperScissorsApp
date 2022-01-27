@@ -4,6 +4,9 @@ body {
 
 #header {
     color: #eb2121;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 20px;
     font-variant: small-caps;
     font-weight: 800;
     font-size: 50px
@@ -35,7 +38,7 @@ body {
 .column {
     float: left;
     width: 50%;
-    margin-top: 5%;
+    
     font-size: 28px;
     font-weight: 700; 
     padding-left: 9%;
@@ -78,7 +81,7 @@ body {
 }
 
 #next-round-btn {
-    border: 2px solid white;
+    border: 2px solid black;
     border-radius: 30px;
     color: white;
     background-color: #eb2121;
@@ -99,12 +102,26 @@ body {
 
 /* Info Page */
 
+#header-info {
+    color: #eb2121;
+    background-color: white;
+    font-variant: small-caps;
+    font-weight: 800;
+    font-size: 50px;
+    text-align: center;
+    border: 3px solid black; 
+    border-radius: 20px;
+}
+
 .return-game {
     margin-left: 65%;
     color: blue;
     font-weight: 900;
     font-size: 22px;
     border: 3px solid blue;
+    border-radius: 10px;
+    padding: 5px;
+    
 }
 
 .game-info {
@@ -113,6 +130,7 @@ body {
     margin-right: 20%;
     padding-top: 15px;
     border: 3px solid black; 
+    border-radius: 20px;
     color: #eb2121;
     background-color: white;
     font-size: 22px;
@@ -144,22 +162,20 @@ text-align: center;
 }
 
 small {
-    color: white;
+    color: black;
 }
 
-#header-info {
-    color: #eb2121;
-    font-variant: small-caps;
-    font-weight: 800;
-    font-size: 50px;
-    text-align: center;
+.info-numbers {
+    color: black;
 }
 
 .info-page {
     margin-left: 65%;
     color: blue;
-    font-weight: 900;
+    font-weight: 600;
     font-size: 22px;
     border: 3px solid blue;
+    border-radius: 10px;
+    padding: 5px;
 }
 

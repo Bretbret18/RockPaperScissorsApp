@@ -1,4 +1,4 @@
-// player DOM
+// PLAYER DOM
 // player div
 let playerBox = document.querySelector('#player-div');
 // round winner or loser column
@@ -13,8 +13,7 @@ let playerWinColumn = document.querySelector('#player-text')
 let playerSide = document.querySelector('#Player-side');
 // player play game button
 let shootBtn = document.querySelector('#shoot-btn');
-
-// opponent DOM
+// OPPONENT DOM
 // Opponent round winner
 let opponentWinColumn = document.querySelector('#opponent-text')
 // opponent symbol placement
@@ -23,8 +22,7 @@ const opponentResult = document.querySelector('#choice-box-opponent')
 const opponentTextBox = document.querySelector('#opponent-text');
 // Opponent Box indicator
 let opponentSide = document.querySelector('#Opponent-side');
-
-// Game DOM
+// GAME DOM
 // resets page and game
 let playAgainBtn = document.querySelector('#play-again');
 // next round btn
@@ -143,8 +141,6 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
                 let playerVal = playerResult.firstChild.className.baseVal;
                 let opponentVal = opponentResult.firstChild.className.baseVal;
 
-                console.log(playerVal, opponentVal);
-
                 // Rock
                 if (playerVal === 'bi bi-gem' && opponentVal === 'bi bi-scissors') {
                     game.roundResultPlayerWin()
@@ -185,27 +181,23 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
             // get random symbol function
             function getRandom() {
                 return Math.floor(Math.random() * game.symbolArray.length)
-            }
-        })
+            };
+        });
     },
     roundResultPlayerWin: function () {
         game.score.win++;
         localStorage.setItem('record', `Win: ${game.score.win} Lose: ${game.score.lose} Draw: ${game.score.draw}`)
         resultIndicator.innerHTML = `Win: ${game.score.win} Lose: ${game.score.lose} Draw: ${game.score.draw}`;
-        console.log('win');
     },
     roundResultPlayerLose: function () {
         game.score.lose++;
         localStorage.setItem('record', `Win: ${game.score.win} Lose: ${game.score.lose} Draw: ${game.score.draw}`)
         resultIndicator.innerHTML = `Win: ${game.score.win} Lose: ${game.score.lose} Draw: ${game.score.draw}`;
-        console.log('lose');
     },
     roundResultDraw: function () {
-        console.log('draw event');
         game.score.draw++;
         localStorage.setItem('record', `Win: ${game.score.win} Lose: ${game.score.lose} Draw: ${game.score.draw}`)
         resultIndicator.innerHTML = `Win: ${game.score.win} Lose: ${game.score.lose} Draw: ${game.score.draw}`;
-        console.log('draw');
     },
     gameOver: function () {
         return null
@@ -214,7 +206,7 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
         playAgainBtn.addEventListener('click', function (e) {
             localStorage.removeItem('record', `Win: ${game.score.win} Lose: ${game.score.lose} Draw: ${game.score.draw}`)
             location.reload();
-        })
+        });
     }
 };
 
