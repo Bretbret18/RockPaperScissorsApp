@@ -97,10 +97,14 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
                 game.gameOver()
                 return null
             }
-            if (game.score.win || game.score.lose) {
+            if (game.score.win || game.score.lose || game.score.draw) {
                 // PROBLEM: prevent additional round clicks per round
                 roundIterator++
+                
                 console.log(e); 
+                if (playerResult.firstElementChild == null) {
+                    return null
+                }
             }
 
             round.innerHTML = roundIterator;
@@ -133,16 +137,19 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
                 caller.style.color = '#fcff54';
                 caller.style.display = 'block';
                 caller.innerHTML = 'Rock!';
+                nextRoundBtn.style.pointerEvents = 'none';
             }, 0000);
             setTimeout(() => {
                 shootPlayerColor()
                 opponentResult.innerHTML = game.symbolArray[1].paper;
                 caller.innerHTML = 'Paper!';
+                
             }, 1000);
             setTimeout(() => {
                 shootPlayerColor()
                 opponentResult.innerHTML = game.symbolArray[2].scissors;
                 caller.innerHTML = 'Scissors!'
+                
             }, 2000);
             setTimeout(() => {
                 let rockResult = game.symbolArray[0].rock;
@@ -158,8 +165,12 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
                 opponentResult.style.color = 'red';
                 playerResult.style.color = 'red';
 
+                
+
                 let playerVal = playerResult.firstChild.className.baseVal;
                 let opponentVal = opponentResult.firstChild.className.baseVal;
+
+                nextRoundBtn.style.pointerEvents = 'auto';
 
                 // Rock
                 if (playerVal === 'bi bi-gem' && opponentVal === 'bi bi-scissors') {
@@ -192,7 +203,7 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
                     game.roundResultDraw()
                 }
             }, 3000);
-
+            
             playerBtns[0].style.pointerEvents = 'none';
             playerBtns[1].style.pointerEvents = 'none';
             playerBtns[2].style.pointerEvents = 'none';
