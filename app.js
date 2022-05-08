@@ -31,9 +31,17 @@ const nextRoundBtn = document.querySelector('#next-round-btn');
 let round = document.querySelector('#round');
 // win/ lose ratio per game
 let resultIndicator = document.querySelector('#result-indicator');
+// shoot caller
+let caller = document.querySelector('#caller');
+
+caller.style.display = 'none';
 
 let roundIterator = 1;
 round.innerHTML = roundIterator;
+
+playerResult.style.color = 'white';
+opponentResult.style.color = 'white';
+
 
 const game = {
     score: { win: 0, lose: 0, draw: 0 },
@@ -90,8 +98,11 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
                 return null
             }
             if (game.score.win || game.score.lose) {
+                // PROBLEM: prevent additional round clicks per round
                 roundIterator++
+                console.log(e); 
             }
+
             round.innerHTML = roundIterator;
             game.roundStyles()
         })
@@ -100,8 +111,9 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
         shootBtn.style.pointerEvents = 'auto';
         playerResult.innerHTML = 'Choose Button!';
         opponentResult.innerHTML = 'Choose Button!';
-        opponentResult.style.color = 'black';
-        playerResult.style.color = 'black';
+        opponentResult.style.color = 'white';
+        playerResult.style.color = 'white';
+        caller.style.display = 'none';
         playerBtns.forEach(function (btn) {
             btn.style.pointerEvents = 'auto'
         })
@@ -118,14 +130,19 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
             setTimeout(() => {
                 shootPlayerColor()
                 opponentResult.innerHTML = game.symbolArray[0].rock;
+                caller.style.color = '#fcff54';
+                caller.style.display = 'block';
+                caller.innerHTML = 'Rock!';
             }, 0000);
             setTimeout(() => {
                 shootPlayerColor()
                 opponentResult.innerHTML = game.symbolArray[1].paper;
+                caller.innerHTML = 'Paper!';
             }, 1000);
             setTimeout(() => {
                 shootPlayerColor()
                 opponentResult.innerHTML = game.symbolArray[2].scissors;
+                caller.innerHTML = 'Scissors!'
             }, 2000);
             setTimeout(() => {
                 let rockResult = game.symbolArray[0].rock;
@@ -133,6 +150,9 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
                 let scissorsResult = game.symbolArray[2].scissors;
 
                 let gameArrayResults = [rockResult, paperResult, scissorsResult]
+
+                caller.style.color = '#eb2121';
+                caller.innerHTML = 'Shoot!';
 
                 opponentResult.innerHTML = gameArrayResults[getRandom()];
                 opponentResult.style.color = 'red';
@@ -186,16 +206,19 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
     },
     roundResultPlayerWin: function () {
         game.score.win++;
+        console.log('record', `Win: ${game.score.win} Lose: ${game.score.lose} Draw: ${game.score.draw}`);
         localStorage.setItem('record', `Win: ${game.score.win} Lose: ${game.score.lose} Draw: ${game.score.draw}`)
         resultIndicator.innerHTML = `Win: ${game.score.win} Lose: ${game.score.lose} Draw: ${game.score.draw}`;
     },
     roundResultPlayerLose: function () {
         game.score.lose++;
+        console.log('record', `Win: ${game.score.win} Lose: ${game.score.lose} Draw: ${game.score.draw}`);
         localStorage.setItem('record', `Win: ${game.score.win} Lose: ${game.score.lose} Draw: ${game.score.draw}`)
         resultIndicator.innerHTML = `Win: ${game.score.win} Lose: ${game.score.lose} Draw: ${game.score.draw}`;
     },
     roundResultDraw: function () {
         game.score.draw++;
+        console.log('record', `Win: ${game.score.win} Lose: ${game.score.lose} Draw: ${game.score.draw}`);
         localStorage.setItem('record', `Win: ${game.score.win} Lose: ${game.score.lose} Draw: ${game.score.draw}`)
         resultIndicator.innerHTML = `Win: ${game.score.win} Lose: ${game.score.lose} Draw: ${game.score.draw}`;
     },
