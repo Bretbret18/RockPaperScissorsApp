@@ -188,3 +188,9 @@ small {
     padding: 5px;
 }
 
+/* Media Queries */
+/* @media screen and (min-width: 1200px) {
+    .playerBtn rock {
+        color: orange;
+    }
+} */
