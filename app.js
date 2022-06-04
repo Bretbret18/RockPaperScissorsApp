@@ -41,6 +41,9 @@ round.innerHTML = roundIterator;
 
 playerResult.style.color = 'white';
 opponentResult.style.color = 'white';
+nextRoundBtn.style.pointerEvents = 'none';
+
+console.log(playerResult.firstElementChild);
 
 
 const game = {
@@ -93,23 +96,22 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
     },
     getRound: function () {
         nextRoundBtn.addEventListener('click', function (e) {
+            if(playerResult.firstElementChild == null && opponentResult.firstElementChild == null){
+                nextRoundBtn.style.pointerEvents = 'none';
+                shootBtn.style.pointerEvents = 'none';
+            }
+
             window.scrollTo(0, 0);
+            
             if (game.score.win >= 2 || game.score.lose >= 2) {
+                nextRoundBtn.style.pointerEvents = 'none';
                 game.gameOver()
                 return null
             }
             if (game.score.win || game.score.lose || game.score.draw) {
                 // PROBLEM: prevent additional round clicks per round
-                roundIterator++
                 
-                if(nextRoundBtn == true) {
-                    return null
-                }
-
-                console.log(e); 
-                if (playerResult.firstElementChild == null) {
-                    return null
-                }
+                roundIterator = roundIterator+1
             }
 
             round.innerHTML = roundIterator;
@@ -117,6 +119,7 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
         })
     },
     roundStyles: function () {
+        nextRoundBtn.style.pointerEvents = 'none';
         shootBtn.style.pointerEvents = 'auto';
         playerResult.innerHTML = 'Choose Button!';
         opponentResult.innerHTML = 'Choose Button!';
@@ -130,6 +133,7 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
     shootEvent: function () {
         shootBtn.addEventListener('click', function (e) {
             window.scrollTo(0, 0);
+            
             if (playerResult.firstElementChild == null) {
                 return null
             }
@@ -211,6 +215,7 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
             playerBtns[0].style.pointerEvents = 'none';
             playerBtns[1].style.pointerEvents = 'none';
             playerBtns[2].style.pointerEvents = 'none';
+            nextRoundBtn.style.pointerEvents = 'none';
             shootBtn.style.pointerEvents = 'none';
 
             // get random symbol function
