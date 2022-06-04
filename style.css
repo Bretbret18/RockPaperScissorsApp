@@ -3,12 +3,15 @@ body {
 }
 
 #header {
+    
     color: #d1dce6;
     background-color: #eb2121;
     border: 3px solid black;
-    border-radius: 10px;
+    border-radius: 1px;
+    padding: 1%;
     font-variant: small-caps;
-    font-weight: 800;
+    font-family: Lucida Handwriting;
+    font-weight: 400;
     font-size: 40px
 }
 
@@ -18,7 +21,8 @@ body {
     margin-left: 45%;
     margin-right: 45%;
     font-size: 30px;
-    font-weight: 800;
+    font-family: Lucida Handwriting;
+    font-weight: 990;
 }
 
 #caller {
@@ -33,6 +37,10 @@ body {
     font-weight: 800;
     font-size: 20px;
     color: white;
+}
+
+#choice-box-player, #choice-box-opponent {
+    font-family: Papyrus;
 }
 
 .flex-grid {
@@ -63,8 +71,9 @@ body {
     color: #eb2121;
     padding: 20px;
     border-radius: 10%;
-    font-weight: 800;
+    font-weight: 900;
     font-size: 22px;
+    font-family: Papyrus;
 }
 
 .button-group {
@@ -107,6 +116,34 @@ body {
     padding: 20px;
     font-weight: 800;
     font-size: 25px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: clear;
+    color: white;
+    text-align: center;
+
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+    margin-bottom: 2%;
+}  
+
+.flex-child:first-child {
+    margin-right: 20px;
+} 
+
+a {
+    color: white;
 }
 
 /* Info Page */
@@ -182,10 +219,10 @@ small {
     margin-left: 65%;
     color: blue;
     font-weight: 600;
-    font-size: 22px;
-    border: 3px solid blue;
+    font-size: 18px;
+    border: 2px solid blue;
     border-radius: 10px;
-    padding: 5px;
+    padding: 3px;
 }
 
 /* Media Queries */

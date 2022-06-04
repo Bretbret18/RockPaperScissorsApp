@@ -1,0 +1,15 @@
+body {
+    background-color: #1e354a;
+}
+
+#header {
+    color: #d1dce6;
+    background-color: #eb2121;
+    border: 3px solid black;
+    border-radius: 10px;
+    font-variant: small-caps;
+    font-family: Papyrus;
+    font-weight: 300;
+    font-size: 40px;
+    text-align: center;
+}
