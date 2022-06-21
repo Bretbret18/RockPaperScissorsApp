@@ -43,9 +43,6 @@ playerResult.style.color = 'white';
 opponentResult.style.color = 'white';
 nextRoundBtn.style.pointerEvents = 'none';
 
-console.log(playerResult.firstElementChild);
-
-
 const game = {
     score: { win: 0, lose: 0, draw: 0 },
     symbolArray: [
@@ -263,11 +260,14 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
     
 };
 
+
+game.roundHandler()
 game.btnsHandler()
 game.shootEvent()
 game.getRound()
 game.gameOver()
 game.playAgain()
+
 
 // TASKS LEFT TO COMPLETE:
 // - Create Page that game cuts to when player
