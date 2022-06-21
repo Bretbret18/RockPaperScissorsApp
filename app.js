@@ -261,7 +261,7 @@ fill="currentColor" class="bi bi-scissors" viewBox="0 0 16 16">
 };
 
 
-game.roundHandler()
+
 game.btnsHandler()
 game.shootEvent()
 game.getRound()
