@@ -1,5 +1,5 @@
 body {
-    background-color: #1e354a;
+    background-color: #353652;
 }
 
 #header {
@@ -7,7 +7,7 @@ body {
     color: #d1dce6;
     background-color: #eb2121;
     border: 3px solid black;
-    border-radius: 1px;
+    border-radius: 1%;
     padding: 1%;
     font-variant: small-caps;
     font-family: Lucida Handwriting;
@@ -223,6 +223,10 @@ small {
     border: 2px solid blue;
     border-radius: 10px;
     padding: 3px;
+}
+
+.push {
+    margin-top: 10%;
 }
 
 /* Media Queries */
